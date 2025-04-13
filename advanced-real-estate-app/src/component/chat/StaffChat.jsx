@@ -155,7 +155,7 @@ const StaffChat = (props) => {
   }, [clients]);
 
   const connect = () => {
-    const socket = new SockJS(`${appInfo.SERVER_URL}/ws`);
+    const socket = new SockJS(`${t("environments.SERVER_URL")}/ws`);
     stompClient = new Client({
       webSocketFactory: () => socket,
       debug: (str) => {},

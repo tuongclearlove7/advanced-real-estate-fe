@@ -1,9 +1,8 @@
 import axios from "axios";
 import queryString from "query-string";
-import { appInfo } from "../constants/appInfos";
 
 // const baseURL = `http://localhost:9090`;
-const baseURL = appInfo.SERVER_URL;
+const baseURL = `https://batdongsan.hoclaptrinhiz.com`;
 // const baseURL = `http://192.168.1.2:8080`;
 
 const axiosClient = axios.create({
