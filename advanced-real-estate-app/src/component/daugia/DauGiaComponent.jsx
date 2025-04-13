@@ -218,7 +218,7 @@ const DauGiaComponent = () => {
   ]);
 
   const connect = () => {
-    const socket = new SockJS("http://localhost:9090/ws", null, {
+    const socket = new SockJS(`${appInfo.SERVER_URL}/ws`, null, {
       withCredentials: true,
     });
     stompClient = new Client({

@@ -61,7 +61,7 @@ const ChatComponent = ({
 
   const connect = () => {
     console.log("Attempting to connect...");
-    const socket = new SockJS("http://localhost:9090/ws");
+    const socket = new SockJS(`${appInfo.SERVER_URL}/ws`);
     stompClient = new Client({
       webSocketFactory: () => socket,
       debug: (str) => {

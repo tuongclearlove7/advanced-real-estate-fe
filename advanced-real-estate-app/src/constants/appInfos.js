@@ -38,4 +38,6 @@ export const appInfo = {
   oldIcon,
   bot,
   bot_ai,
+  SERVER_URL: "https://batdongsan.hoclaptrinhiz.com",
+  LOCAL_URL: "http://localhost:9090"
 };
