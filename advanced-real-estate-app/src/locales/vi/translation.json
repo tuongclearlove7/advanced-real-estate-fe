@@ -3,6 +3,9 @@
     "SERVER_URL": "https://batdongsan.hoclaptrinhiz.com",
     "LOCAL_URL": "http://localhost:9090"
   },
+  "errors": {
+    "message": "Đã có lỗi xảy ra"
+  },
   "home": {
     "welcome": "Welcome to ",
     "title": "ADVANCED REAL ESTATE",

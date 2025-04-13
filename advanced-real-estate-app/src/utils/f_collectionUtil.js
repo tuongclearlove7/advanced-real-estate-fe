@@ -14,7 +14,7 @@ export const f_collectionUtil = {
         set(res?.data);
       })
       .catch((error) => {
-        message.error("Error: ", error);
+        message.error("Đã có lỗi xảy ra!");
         console.log("Error: ", error);
       });
   },
@@ -24,7 +24,7 @@ export const f_collectionUtil = {
         sets(res?.data);
       })
       .catch((error) => {
-        message.error("Error: ", error);
+        message.error("Đã có lỗi xảy ra!");
         console.log("Error: ", error);
       });
   },
