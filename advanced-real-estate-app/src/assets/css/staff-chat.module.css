@@ -777,31 +777,3 @@
     gap: 0.5rem;
   }
 }
-
-/* Small mobile devices */
-@media (max-width: 480px) {
-  .staff_sidebar {
-    max-height: 250px;
-  }
-
-  .staff_chat_area {
-    height: calc(100vh - 250px);
-  }
-
-  .sidebar_icons_only + .staff_chat_area {
-    height: calc(100vh - 50px);
-  }
-
-  .messageItem {
-    max-width: 95%;
-    padding: 8px 10px;
-  }
-
-  .staff_email {
-    font-size: 12px;
-    max-width: 200px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
