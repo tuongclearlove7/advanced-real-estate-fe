@@ -275,15 +275,195 @@
   cursor: not-allowed;
 }
 
-/* Responsive adjustments */
-@media (max-width: 480px) {
-  .chat_box {
-    width: 300px;
-    right: 10px;
+/* Responsive styles for mobile devices */
+@media (max-width: 1024px) {
+  .chat_box_resize {
+    width: 90vw;
+    height: 80vh;
+    right: 5vw;
+    bottom: 10vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .chat_container {
     bottom: 10px;
+    right: 10px;
   }
 
   .chat_icon {
-    right: 10px;
+    font-size: 45px;
+  }
+
+  .icon_gradient {
+    font-size: 50px;
+  }
+
+  .chat_box,
+  .chat_box_resize {
+    width: 90vw;
+    height: 80vh;
+    right: 5vw;
+    bottom: 10vh;
+    max-height: 600px;
+  }
+
+  .header_title {
+    font-size: 12px;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .bubble {
+    max-width: 85%;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat_container {
+    bottom: 5px;
+    right: 5px;
+  }
+
+  .chat_icon {
+    font-size: 40px;
+  }
+
+  .icon_gradient {
+    font-size: 45px;
+  }
+
+  .chat_box,
+  .chat_box_resize {
+    width: 100vw;
+    height: 100vh;
+    right: 0;
+    bottom: 0;
+    border-radius: 0;
+    max-height: none;
+  }
+
+  .chat_header {
+    border-radius: 0;
+  }
+
+  .tab {
+    padding: 8px 5px;
+    font-size: 12px;
+  }
+
+  .tab_icon_wrapper {
+    width: 16px;
+    height: 16px;
+    margin-right: 2px;
+  }
+
+  .bot_icon {
+    width: 40px;
+  }
+
+  .header_content {
+    padding: 8px;
+  }
+
+  .header_title {
+    font-size: 11px;
+    max-width: 150px;
+  }
+
+  .close_btn {
+    font-size: 14px;
+  }
+
+  .chat_content {
+    padding: 8px;
+  }
+
+  .bubble {
+    max-width: 90%;
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .chat_footer {
+    padding: 8px;
+  }
+
+  .chat_input {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+
+  .send_btn {
+    width: 32px;
+    height: 32px;
+    padding: 6px;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 360px) {
+  .tab {
+    font-size: 11px;
+    padding: 6px 3px;
+  }
+
+  .tab_icon_wrapper {
+    width: 14px;
+    height: 14px;
+  }
+
+  .bot_icon {
+    width: 30px;
+  }
+
+  .header_title {
+    font-size: 10px;
+    max-width: 120px;
+  }
+
+  .bubble {
+    max-width: 95%;
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+  .chat_box,
+  .chat_box_resize {
+    height: 90vh;
+    width: 60vw;
+    right: 20vw;
+  }
+
+  .chat_content {
+    max-height: 60vh;
+  }
+}
+
+/* Fix for iOS Safari viewport issues */
+@supports (-webkit-touch-callout: none) {
+  .chat_box,
+  .chat_box_resize {
+    height: -webkit-fill-available;
+    max-height: -webkit-fill-available;
+  }
+}
+
+/* Animation for mobile transitions */
+@media (max-width: 768px) {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
