@@ -54,9 +54,6 @@ const RolerScreen = () => {
   };
 
   const createRoles = async () => {
-    if (!createRole?.permission_name?.trim()) {
-      return Toast("error", "Tên quyền không được để trống");
-    }
     if (!createRole?.role_type?.trim()) {
       return Toast("error", "Loại vai trò không được để trống");
     }
