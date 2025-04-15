@@ -275,7 +275,6 @@
   cursor: not-allowed;
 }
 
-/* Responsive styles for mobile devices */
 @media (max-width: 1024px) {
   .chat_box_resize {
     width: 90vw;
@@ -322,6 +321,16 @@
 }
 
 @media (max-width: 480px) {
+  .chat_box,
+  .chat_box_resize {
+    width: 100vw;
+    height: 85vh; /* Reduced from 100vh to 85vh */
+    right: 0;
+    bottom: 0;
+    border-radius: 0;
+    max-height: none;
+  }
+
   .chat_container {
     bottom: 5px;
     right: 5px;
@@ -333,16 +342,6 @@
 
   .icon_gradient {
     font-size: 45px;
-  }
-
-  .chat_box,
-  .chat_box_resize {
-    width: 100vw;
-    height: 100vh;
-    right: 0;
-    bottom: 0;
-    border-radius: 0;
-    max-height: none;
   }
 
   .chat_header {
@@ -405,6 +404,11 @@
 
 /* Small mobile devices */
 @media (max-width: 360px) {
+  .chat_box,
+  .chat_box_resize {
+    height: 80vh; /* Even shorter for very small devices */
+  }
+
   .tab {
     font-size: 11px;
     padding: 6px 3px;
@@ -428,6 +432,22 @@
     max-width: 95%;
     padding: 6px 8px;
     font-size: 13px;
+  }
+}
+
+/* Add a specific adjustment for shorter mobile screens */
+@media (max-height: 700px) and (max-width: 480px) {
+  .chat_box,
+  .chat_box_resize {
+    height: 75vh; /* Shorter height for devices with small screen height */
+  }
+}
+
+/* Add a specific adjustment for very short mobile screens */
+@media (max-height: 600px) and (max-width: 480px) {
+  .chat_box,
+  .chat_box_resize {
+    height: 70vh; /* Even shorter for very small screen heights */
   }
 }
 
