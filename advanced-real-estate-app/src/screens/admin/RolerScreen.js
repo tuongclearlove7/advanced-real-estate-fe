@@ -54,9 +54,18 @@ const RolerScreen = () => {
   };
 
   const createRoles = async () => {
-    console.log(permission);
-    console.log(role);
-    console.log(newPermission);
+    if (!createRole?.permission_name?.trim()) {
+      return Toast("error", "Tên quyền không được để trống");
+    }
+    if (!createRole?.role_type?.trim()) {
+      return Toast("error", "Loại vai trò không được để trống");
+    }
+    if (!createRole?.status?.trim()) {
+      return Toast("error", "Trạng thái không được để trống");
+    }
+    if (!checkLink && !createRole?.role_name?.trim()) {
+      return Toast("error", "Tên vai trò không được để trống");
+    }  
     const url = `/api/admins/role`;
     const payload = checkLink
       ? {
@@ -64,7 +73,7 @@ const RolerScreen = () => {
           role_type: createRole?.role_type,
         }
       : createRole;
-    console.log("payload data: ", payload);
+    
     try {
       const res = await handleAPI(url, payload, "post", auth?.token);
       if (res.status === 200) {
@@ -389,7 +398,7 @@ const RolerScreen = () => {
                       })
                     }
                   >
-                    <option value="" disabled>-- Chọn loại quyền --</option>  
+                    <option value="">-- Chọn loại quyền --</option>  
                     {appVariables.listRoleRequireForManagerPage.map(
                       (item, index) => (
                         <option key={index} value={item}>{`${item}`}</option>
