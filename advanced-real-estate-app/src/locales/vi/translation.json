@@ -1,6 +1,6 @@
 {
   "environments": {
-    "SERVER_URL": "https://batdongsan.hoclaptrinhiz.com",
+    "SERVER_URL": "https://advanced-real-estate-be.onrender.com",
     "LOCAL_URL": "http://localhost:9090"
   },
   "errors": {
