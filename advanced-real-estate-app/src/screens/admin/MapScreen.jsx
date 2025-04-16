@@ -5,6 +5,7 @@ import {
   Marker,
   useMap,
   useMapEvents,
+  ShowMapUpdateWrapper
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -348,6 +349,7 @@ const MapScreen = () => {
         updateWard={updateWard}
         centerUpdate={centerUpdate}
         handleUpdateMap={UpdateMap}
+        setUpdateMap={setUpdateMap}
         updateAddress={updateAddress}
         updateDistrict={updateDistrict}
         updateProvince={updateProvince}

@@ -5,6 +5,7 @@ import {
   Marker,
   useMap,
   useMapEvents,
+  ShowMapUpdateWrapper
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -77,8 +78,8 @@ const MapUpdateModal = (props) => {
                           className="form-control"
                           value={props?.updateMap.map_name}
                           onChange={(e) => {
-                            setUpdateMap({
-                              ...updateMap,
+                            props?.setUpdateMap({
+                              ...props?.updateMap,
                               map_name: e.target.value,
                             });
                           }}

@@ -5,6 +5,7 @@ import {
   Marker,
   useMap,
   useMapEvents,
+  ShowMapWrapper
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
