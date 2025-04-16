@@ -5,13 +5,12 @@ import {
   Marker,
   useMap,
   useMapEvents,
-  ShowMapWrapper
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "leaflet-routing-machine";
 import { appInfo } from "../../constants/appInfos";
-import "leaflet-control-geocoder"; 
+import "leaflet-control-geocoder";
 import { authSelector } from "../../redux/reducers/authReducer";
 import { useSelector } from "react-redux";
 import { buildingSelector } from "../../redux/reducers/buildingReducer";
@@ -56,7 +55,7 @@ const MapCreateModal = (props) => {
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                       />
-                      <ShowMapWrapper />
+                      {props?.ShowMapWrapper}
                       {props?.selectedShowLocation && (
                         <Marker
                           position={props?.selectedShowLocation} // Vị trí đã click

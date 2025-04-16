@@ -5,7 +5,6 @@ import {
   Marker,
   useMap,
   useMapEvents,
-  ShowMapUpdateWrapper
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -50,7 +49,7 @@ const MapUpdateModal = (props) => {
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                       />
-                      <ShowMapUpdateWrapper />
+                      {props?.ShowMapUpdateWrapper}
                       {props?.selectedShowLocationUpdate && (
                         <Marker
                           position={props?.selectedShowLocationUpdate} // Vị trí marker cập nhật
