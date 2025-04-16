@@ -182,6 +182,7 @@ const Footer = () => {
               <div className="col-md-6 text-center text-md-end">
                 <div className="footer-menu">
                   <Link to="/">{t("home.footers.links.home")}</Link>
+                  <Link to="/admin/login">{t("home.footers.links.login")}</Link>
                   <Link to="/">{t("home.footers.links.cookies")}</Link>
                   <Link to="/">{t("home.footers.links.help")}</Link>
                   <Link to="/">{t("home.footers.links.faq")}</Link>
