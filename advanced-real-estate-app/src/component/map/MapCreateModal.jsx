@@ -14,7 +14,6 @@ import { appInfo } from "../../constants/appInfos";
 import "leaflet-control-geocoder"; 
 import { authSelector } from "../../redux/reducers/authReducer";
 import { useSelector } from "react-redux";
-import { authSelector } from "../../redux/reducers/authReducer";
 import { buildingSelector } from "../../redux/reducers/buildingReducer";
 
 const MapCreateModal = (props) => {
