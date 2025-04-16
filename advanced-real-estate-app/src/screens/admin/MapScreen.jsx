@@ -64,6 +64,11 @@ const MapScreen = () => {
             position.coords.latitude,
             position.coords.longitude,
           ]);
+          setCenter([position.coords.latitude, position.coords.longitude]);
+          setCenterUpdate([
+            position.coords.latitude,
+            position.coords.longitude,
+          ]);
         },
         (error) => {
           console.error("Lỗi khi lấy vị trí người dùng: ", error);
