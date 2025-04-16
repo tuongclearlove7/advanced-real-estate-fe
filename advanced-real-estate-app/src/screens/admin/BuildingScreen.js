@@ -11,6 +11,13 @@ import "leaflet-routing-machine";
 import { appInfo } from "./../../constants/appInfos";
 import { Bag, Setting2 } from "iconsax-react";
 import { appVariables } from "../../constants/appVariables";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  buildingSelector,
+  failed,
+  setSelectedArea,
+  success,
+} from "../../redux/reducers/buildingReducer";
 
 const BuildingScreen = () => {
   const auth = useSelector(authSelector);
@@ -30,7 +37,7 @@ const BuildingScreen = () => {
   const [files, setFiles] = useState([]);
   const inputFileRef = useRef(null);
   const inputFileCreateRef = useRef(null);
-
+  const dispatch = useDispatch();
   const mapRef = useRef(null); // Tham chiếu tới bản đồ
   const routingControlRef = useRef(null); // Tham chiếu tới điều khiển định tuyến
   const markersRef = useRef([]); // Tham chiếu tới tất cả các markers đã thêm
@@ -90,6 +97,7 @@ const BuildingScreen = () => {
     try {
       const data = await handleAPI(url, {}, "get", auth?.token);
       setBuildings(data.data.data);
+      dispatch(success(data.data.data));
       setPagination(data.data.pagination);
     } catch (error) {
       console.log(error);
