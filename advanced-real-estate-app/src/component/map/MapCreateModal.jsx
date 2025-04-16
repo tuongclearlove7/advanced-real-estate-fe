@@ -22,7 +22,6 @@ const MapCreateModal = (props) => {
   const [center, setCenter] = useState([14.0583, 108.2772]);
 
   useEffect(() => {
-    GetData();
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
