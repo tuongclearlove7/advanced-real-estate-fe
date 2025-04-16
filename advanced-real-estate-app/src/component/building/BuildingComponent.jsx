@@ -121,41 +121,38 @@ const BuildingComponent = () => {
 
   useEffect(() => {
     const allBuildings = buildingReducer?.buildings || [];
+
     const filteredData = allBuildings.filter((building) => {
-      const listTypeBuildingRent = Array.from(
-        { length: 999 },
-        (_, i) => `nhà cho thuê giá ${i + 1} triệu/tháng`
-      );
-      const listTypeBuildingSale = Array.from(
-        { length: 999 },
-        (_, i) => `nhà bán giá ${i + 1} tỷ`
-      );
-      const matchesAuctionBuilding = [
-        "Nhà bán",
-        "Nhà cho thuê",
-        ...listTypeBuildingRent,
-        ...listTypeBuildingSale,
-      ].some((type) => type === building?.typeBuilding?.type_name);
+      const typeName = building?.typeBuilding?.type_name?.toLowerCase() || "";
+
+      const matchesAuctionBuilding =
+        typeName.includes("nhà bán") || typeName.includes("nhà cho thuê");
+
       const matchesType = buildingReducer?.selectedType
-        ? building?.typeBuilding?.type_name === buildingReducer?.selectedType
+        ? typeName.includes(buildingReducer.selectedType.toLowerCase())
         : true;
+
       const matchesArea = buildingReducer?.selectedArea
-        ? building?.area === buildingReducer?.selectedArea
+        ? building?.area === buildingReducer.selectedArea
         : true;
+
       const matchesStructure = buildingReducer?.selectedStructure
-        ? building?.structure === buildingReducer?.selectedStructure
+        ? building?.structure === buildingReducer.selectedStructure
         : true;
+
       const matchesPrice = buildingReducer?.inputPrice
-        ? building?.price <= buildingReducer?.inputPrice
+        ? building?.price <= buildingReducer.inputPrice
         : true;
+
       return (
+        matchesAuctionBuilding &&
         matchesType &&
         matchesArea &&
         matchesStructure &&
-        matchesPrice &&
-        matchesAuctionBuilding
+        matchesPrice
       );
     });
+
     setFilteredBuildings(filteredData);
   }, [
     buildingReducer?.buildings,
