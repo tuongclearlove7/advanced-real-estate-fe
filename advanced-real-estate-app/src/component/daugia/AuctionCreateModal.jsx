@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { authSelector } from "../../redux/reducers/authReducer";
 import { buildingSelector } from "../../redux/reducers/buildingReducer";
 import handleAPI from "../../apis/handlAPI";
 import { message } from "antd";
+import {
+  buildingSelector,
+  failed,
+  setSelectedArea,
+  success,
+} from "../../redux/reducers/buildingReducer";
 
 const AuctionCreateModal = ({ refresh }) => {
   const auth = useSelector(authSelector);
   const [item, setItem] = useState(null);
   const buildingReducer = useSelector(buildingSelector);
   const [auctionBuildings, setAuctionBuildings] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    getBuildings();
     setItem({
       name: "Phiên đấu giá mặc định",
       start_date: "2024-11-14",
@@ -23,6 +31,10 @@ const AuctionCreateModal = ({ refresh }) => {
       userCreatedBy: auth?.info?.id,
     });
   }, [auth]);
+
+  useEffect(() => {
+    return () => dispatch(failed());
+  }, []);
 
   useEffect(() => {
     const allBuildings = buildingReducer?.buildings || [];
@@ -40,6 +52,20 @@ const AuctionCreateModal = ({ refresh }) => {
       ...prevInfo,
       [name]: value,
     }));
+  };
+
+  const getBuildings = async () => {
+    try {
+      const data = await handleAPI(
+        `/api/admin/buildings`,
+        {},
+        "get",
+        auth?.token
+      );
+      dispatch(success(data.data.data));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleCreate = () => {
