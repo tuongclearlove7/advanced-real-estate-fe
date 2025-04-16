@@ -757,8 +757,8 @@ const BuildingScreen = () => {
                               >
                                 <option value="">Vui lòng chọn địa chỉ</option>
                                 {maps.map((value, key) => (
-                                  <option key={key} value={value.id}>
-                                    {value.map_name}
+                                  <option key={key} value={value?.id}>
+                                    {`${value?.map_name} - ${value?.address}`}
                                   </option>
                                 ))}
                               </select>
