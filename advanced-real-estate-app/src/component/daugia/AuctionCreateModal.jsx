@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { authSelector } from "../../redux/reducers/authReducer";
-import { buildingSelector } from "../../redux/reducers/buildingReducer";
 import handleAPI from "../../apis/handlAPI";
 import { message } from "antd";
 import {
