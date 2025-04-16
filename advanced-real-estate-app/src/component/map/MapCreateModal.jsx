@@ -12,7 +12,6 @@ import L from "leaflet";
 import "leaflet-routing-machine";
 import { appInfo } from "../../constants/appInfos";
 import "leaflet-control-geocoder"; 
-import { useSelector } from "react-redux";
 import { authSelector } from "../../redux/reducers/authReducer";
 import { useSelector } from "react-redux";
 import { authSelector } from "../../redux/reducers/authReducer";
