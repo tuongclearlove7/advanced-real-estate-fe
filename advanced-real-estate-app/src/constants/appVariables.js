@@ -38,9 +38,7 @@ export let appVariables = {
   listPathNoFilterClick: ["/buildings"],
   listRoleRequireForManagerPage: ["MANAGEMENT", "NORMAL"],
   formatMoney: (value) => {
-    const number = Number(
-      String(value).replace(/[^\d]/g, "") 
-    );
+    const number = Number(String(value).replace(/[^\d]/g, ""));
     if (isNaN(number)) return "0 VNĐ";
     const formatted = number.toLocaleString("vi-VN");
     return `${formatted} VNĐ`;

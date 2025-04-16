@@ -138,11 +138,9 @@ const RolerScreen = () => {
     const a = arrayPermissionPre
       .filter((value) => value.checked === true)
       .map((value) => value.id);
-    console.log("đây là mảng a: ", a);
     const b = updatedPermissions
       .filter((value) => value.checked === true)
       .map((value) => value.id);
-    console.log("đây là mảng b: ", b);
     // Tìm các phần tử trong b không có trong a (tạo mảng c)
     const c = b.filter((item) => !a.includes(item));
 
@@ -150,8 +148,6 @@ const RolerScreen = () => {
     const d = [...a, ...b]
       .filter((item) => !a.includes(item) || !b.includes(item))
       .filter((item) => !c.includes(item)); // Loại trừ phần tử đã có trong c
-    console.log(`Mảng c (phần tử trong b không có trong a):`, c);
-    console.log(`Mảng d (phần tử khác nhau giữa a và b, không có trong c):`, d);
     setArrayCreatePerrmission(c);
     setArrayDeleletPermission(d);
   };
@@ -187,11 +183,6 @@ const RolerScreen = () => {
       id: roleId,
       list: arrayDeleletPermission,
     };
-
-    console.log("Role ID: ", roleId);
-    console.log("New Permission: ", arrayPermission);
-    console.log("Pay Load Create: ", payLoadCreate);
-    console.log("Pay Load Delete: ", payLoadDelete);
 
     if (
       arrayPermission.length === 0 &&

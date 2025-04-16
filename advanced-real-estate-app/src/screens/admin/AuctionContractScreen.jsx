@@ -60,7 +60,6 @@ const AuctionContractScreen = (props) => {
       auth?.token
     )
       .then((res) => {
-        console.log("data: ", res?.data);
         setAuctionContracts(res?.data);
       })
       .catch((error) => {
@@ -76,7 +75,7 @@ const AuctionContractScreen = (props) => {
       "delete",
       auth?.token
     )
-      .then((res) => message.success("Delete successfully!"))
+      .then((res) => message.success("Xóa thành công!"))
       .catch((error) => {
         message.error("Đã có lỗi sảy ra!");
         console.log("Delete error: ", error);
@@ -93,7 +92,6 @@ const AuctionContractScreen = (props) => {
         "PATCH",
         auth?.token
       );
-      console.log(res);
       message.error("Xác nhận thanh toán thành công!");
       setOpenFormPayment(false);
       await refresh();

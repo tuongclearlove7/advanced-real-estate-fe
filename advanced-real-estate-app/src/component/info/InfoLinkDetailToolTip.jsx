@@ -18,9 +18,7 @@ const InfoLinkDetailToolTip = (props) => {
       onBlur={hideTooltip}
     >
       <Link
-        onClick={() =>
-          (window.location.href = `/user/info`)
-        }
+        onClick={() => (window.location.href = `/user/info`)}
         className={`${styles.link} ${props?.className || ""}`}
       >
         <span>{props?.full_name}</span>
@@ -50,9 +48,7 @@ const InfoLinkDetailToolTip = (props) => {
             </div>
             <hr style={{ margin: "10px 0px 0px 0px" }} />
             <Link
-              onClick={() =>
-                (window.location.href = `/user/info`)
-              }
+              onClick={() => (window.location.href = `/user/info`)}
               className={styles.detailsLink}
             >
               Xem chi tiết

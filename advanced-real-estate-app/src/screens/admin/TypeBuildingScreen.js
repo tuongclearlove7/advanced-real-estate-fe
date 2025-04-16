@@ -21,7 +21,6 @@ const TypeBuildingScreen = () => {
             const data = await handleAPI(url, {}, "get", auth?.token);
             setTypeBuilding(data.data.data);
             setPagination(data.data.pagination);
-            console.log(data);
         } catch (error) {
             console.log(error);
         }

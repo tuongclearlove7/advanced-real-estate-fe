@@ -202,7 +202,6 @@ const MapScreen = () => {
     };
     try {
       const res = await handleAPI(url, object, "delete", auth?.token);
-      console.log(res.status);
 
       if (res.status === 200) {
         Toast("success", res.message);

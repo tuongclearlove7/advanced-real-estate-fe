@@ -57,7 +57,7 @@ const AuctionContract = () => {
       );
       setAuctionContracts(res?.data);
     } catch (error) {
-      message.error("Fetch error: " + error);
+      message.error("Đã có lỗi xảy ra!");
       console.log("Fetch error: ", error);
     } finally {
       setLoading(false);

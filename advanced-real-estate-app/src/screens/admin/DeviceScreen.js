@@ -42,7 +42,6 @@ const DeviceScreen = () => {
       const data = await handleAPI(url, {}, "get", auth?.token);
       setDevice(data.data.data);
       setPagination(data.data.pagination);
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -53,7 +52,6 @@ const DeviceScreen = () => {
     try {
       const data = await handleAPI(url, {}, "get", auth?.token);
       setBuilding(data.data.data);
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -64,7 +62,6 @@ const DeviceScreen = () => {
     try {
       const data = await handleAPI(url, {}, "get", auth?.token);
       setCategory(data.data.data);
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -108,7 +105,6 @@ const DeviceScreen = () => {
     const url = `/api/device`;
     try {
       const res = await handleAPI(url, createDevice, "post", auth?.token);
-      console.log(res.status);
 
       if (res.status === 200) {
         Toast("success", res.message);
@@ -128,7 +124,6 @@ const DeviceScreen = () => {
     const updatedNew = { ...value, status: newStatus };
     try {
       const res = await handleAPI(url, updatedNew, "put", auth?.token);
-      console.log(res.status);
 
       if (res.status === 200) {
         Toast("success", res.message);
@@ -183,7 +178,6 @@ const DeviceScreen = () => {
       const url = `/api/device/${listCheckBox}`;
       try {
         const res = await handleAPI(url, {}, "delete", auth?.token);
-        console.log(res.status);
 
         if (res.status === 200) {
           Toast("success", res.message);
@@ -205,7 +199,6 @@ const DeviceScreen = () => {
       };
       try {
         const res = await handleAPI(url, object, "delete", auth?.token);
-        console.log(res.status);
 
         if (res.status === 200) {
           Toast("success", res.message);

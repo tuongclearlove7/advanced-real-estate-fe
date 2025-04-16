@@ -30,10 +30,6 @@ const AuctionHistoryScreen = () => {
   }, [auth?.token]);
 
   useEffect(() => {
-    console.log(auctionHistories);
-  }, [auctionHistories]);
-
-  useEffect(() => {
     handleAPI("/api/admin/buildings", {}, "get", auth?.token)
       .then((res) => {
         setBuildings(res?.data);
@@ -86,9 +82,9 @@ const AuctionHistoryScreen = () => {
       "delete",
       auth?.token
     )
-      .then((res) => message.success("Delete successfully!"))
+      .then((res) => message.success("Xóa thành công"))
       .catch((error) => {
-        message.error("Delete error: ", error);
+        message.error("Đã có lỗi xảy ra!");
         console.log("Delete error: ", error);
       });
     await refresh();

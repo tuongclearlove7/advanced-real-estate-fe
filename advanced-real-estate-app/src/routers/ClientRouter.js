@@ -26,10 +26,6 @@ const ClientRouter = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log("auth: ", auth);
-  }, [auth]);
-
   const addCssLink = (href) => {
     const link = document.createElement("link");
     link.rel = "stylesheet";

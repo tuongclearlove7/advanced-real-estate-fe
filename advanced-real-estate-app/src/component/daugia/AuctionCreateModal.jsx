@@ -19,21 +19,20 @@ const AuctionCreateModal = ({ refresh }) => {
       end_time: "23:59",
       description: "Mô tả mặc định",
       active: false,
-      building_id: null, //buildingReducer?.buildings[0]?.id
+      building_id: null,
       userCreatedBy: auth?.info?.id,
     });
   }, [auth]);
 
   useEffect(() => {
-    console.log("item: ", item);
-  }, [item]);
-
-  useEffect(() => {
-    const filteredData = buildingReducer?.buildings?.filter((building) => {
-      return ["Nhà đấu giá"].includes(building?.typeBuilding?.type_name);
+    const allBuildings = buildingReducer?.buildings || [];
+    const filteredData = allBuildings.filter((building) => {
+      const typeName = building?.typeBuilding?.type_name?.toLowerCase() || "";
+      const matchesAuctionBuilding = typeName.includes("Nhà đấu giá");
+      return matchesAuctionBuilding;
     });
-    setAuctionBuildings(filteredData);
-  }, [buildingReducer]);
+    setFilteredBuildings(filteredData);
+  }, [buildingReducer?.buildings]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

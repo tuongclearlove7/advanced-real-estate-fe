@@ -1,6 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Button, Checkbox, Dropdown, Space } from "antd";
 import React, { useEffect, useMemo, useState, useCallback } from "react";
 import handleAPI from "./../../apis/handlAPI";
@@ -10,7 +7,6 @@ import { Bag, GalleryImport, Setting2 } from "iconsax-react";
 import { Image, Upload } from "antd";
 import Toast from "../../config/ToastConfig";
 import moment from "moment";
-// import $ from "jquery";
 const AdminScreen = () => {
   const [admins, setAdmins] = useState([]);
   const auth = useSelector(authSelector);

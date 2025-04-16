@@ -78,7 +78,6 @@ const AuctionContractDetailModal = (props) => {
     }
     setFiles((prevFiles) => {
       const updatedFiles = { ...prevFiles, [name]: file };
-      console.log("Updated files:", updatedFiles);
       return updatedFiles;
     });
     const previewUrl = URL.createObjectURL(file);
@@ -98,8 +97,7 @@ const AuctionContractDetailModal = (props) => {
         auth?.token
       );
       props?.utils?.refresh();
-      console.log("Upload response:", data);
-      message.success(data?.message);
+      message.success("Tải lên thành công");
     } catch (error) {
       console.error("Lỗi tải lên:", error);
       if (error?.code >= 302 && error?.code <= 400) {

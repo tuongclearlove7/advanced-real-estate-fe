@@ -91,7 +91,6 @@ const BuildingScreen = () => {
       const data = await handleAPI(url, {}, "get", auth?.token);
       setBuildings(data.data.data);
       setPagination(data.data.pagination);
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -503,7 +502,6 @@ const BuildingScreen = () => {
     try {
       // Gửi yêu cầu cập nhật trạng thái
       const res = await handleAPI(url, updatedBuilding, "put", auth?.token);
-      console.log("Response Status:", res.status);
 
       if (res.status === 200) {
         Toast("success", res.message);

@@ -18,10 +18,6 @@ const InfoModal = ({ user, setUser, getUserInfo }) => {
     });
   }, [user]);
 
-  useEffect(() => {
-    console.log(info);
-  }, [info]);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInfo((prevInfo) => ({
@@ -38,11 +34,11 @@ const InfoModal = ({ user, setUser, getUserInfo }) => {
         "PATCH",
         auth?.token
       );
-      message.success("Update successfully");
+      message.success("Cập nhật thành công");
       setUser(res?.result);
       return res;
     } catch (e) {
-      message.error(e.message);
+      message.error("Cập nhật thất bại!");
       console.log("Update error: ", e);
     }
   };

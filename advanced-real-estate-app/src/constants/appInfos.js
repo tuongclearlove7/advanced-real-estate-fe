@@ -23,8 +23,8 @@ export const appInfo = {
   nameAI: "ADVANCED REAL ESTATE AI",
   description: "",
   email: "nhom3@dtu.edu.vn",
-  companyName: 'Công Ty CP Đất Xanh Miền Trung',
-  address: '15 Quang Trung, Hải Châu 1, Hải Châu, Đà Nẵng',
+  companyName: "Công Ty CP Đất Xanh Miền Trung",
+  address: "15 Quang Trung, Hải Châu 1, Hải Châu, Đà Nẵng",
   phoneNumber: "+84915662495",
   avatar: avatar,
   vitri1: vitri1,
@@ -39,5 +39,5 @@ export const appInfo = {
   bot,
   bot_ai,
   SERVER_URL: "https://batdongsan.hoclaptrinhiz.com",
-  LOCAL_URL: "http://localhost:9090"
+  LOCAL_URL: "http://localhost:9090",
 };

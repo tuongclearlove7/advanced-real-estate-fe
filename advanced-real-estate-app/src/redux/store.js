@@ -1,24 +1,24 @@
-import {createStore, applyMiddleware} from 'redux';
+import { createStore, applyMiddleware } from "redux";
 import rootReducers from "./reducers/index";
-import {thunk} from "redux-thunk"
-import {configureStore} from "@reduxjs/toolkit"
+import { thunk } from "redux-thunk";
+import { configureStore } from "@reduxjs/toolkit";
 import {
-    persistStore,
-    persistReducer,
-    FLUSH,
-    REHYDRATE,
-    PAUSE,
-    PERSIST,
-    PURGE,
-    REGISTER,
-} from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
-    key: 'root',
-    version: 1,
-    storage,
-}
+  key: "root",
+  version: 1,
+  storage,
+};
 
 // // Tạo store với các reducer cần thiết
 // export const store = configureStore({
@@ -29,16 +29,16 @@ const persistConfig = {
 //
 // export default store;
 
-const persistedReducer = persistReducer(persistConfig, rootReducers)
+const persistedReducer = persistReducer(persistConfig, rootReducers);
 
 export const store = configureStore({
-    reducer: persistedReducer,
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware({
-            serializableCheck: {
-                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-            },
-        }),
-})
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+});
 
 export let persistor = persistStore(store);

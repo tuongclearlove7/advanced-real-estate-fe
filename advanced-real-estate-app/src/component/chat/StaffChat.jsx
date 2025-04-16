@@ -97,14 +97,6 @@ const StaffChat = (props) => {
     );
   }, []);
 
-  // useEffect(() => {
-  //   console.log(messages);
-  // }, [messages]);
-
-  // useEffect(() => {
-  //   console.log("chat: ", chat);
-  // }, [chat]);
-
   useEffect(() => {
     if (userData.connected && activeUser) {
       connect();
@@ -211,8 +203,6 @@ const StaffChat = (props) => {
   const onMessageReceived = async (payload) => {
     const message = JSON.parse(payload.body);
     const isUserOnline = message?.listUserOnline?.includes(activeUser?.email);
-    console.log("message: ", message);
-
     if (
       !f_collectionUtil.checkIsValidToken({
         auth: auth,

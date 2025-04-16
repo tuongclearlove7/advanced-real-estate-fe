@@ -30,16 +30,12 @@ const AuctionScreen = () => {
   }, [auth?.token]);
 
   useEffect(() => {
-    console.log(auctions);
-  }, [auctions]);
-
-  useEffect(() => {
     handleAPI("/api/admin/buildings", {}, "get", auth?.token)
       .then((res) => {
         setBuildings(res?.data);
       })
       .catch((error) => {
-        message.error("Fetch error: ", error);
+        message.error("Đã có lỗi xảy ra!");
         console.log("Fetch error: ", error);
       });
   }, [auth?.token]);
@@ -50,7 +46,7 @@ const AuctionScreen = () => {
         setAuctions(res?.data);
       })
       .catch((error) => {
-        message.error("Fetch error: ", error);
+        message.error("Đã có lỗi xảy ra!");
         console.log("Fetch error: ", error);
       });
   };
@@ -59,7 +55,7 @@ const AuctionScreen = () => {
     await handleAPI(`/api/admin/auctions/${id}`, {}, "delete", auth?.token)
       .then((res) => message.success("Delete successfully!"))
       .catch((error) => {
-        message.error("Delete error: ", error);
+        message.error("Đã có lỗi xảy ra!");
         console.log("Delete error: ", error);
       });
     await refresh();

@@ -6,13 +6,7 @@ import { message } from "antd";
 export const handleApiBuilding = async (url, data, method, token) => {
   return await handleApiRequest(url, data, method, token);
 };
-export const fetchUser = async (
-  url,
-  data,
-  method,
-  token,
-  dispatch,
-) => {
+export const fetchUser = async (url, data, method, token, dispatch) => {
   try {
     return await handleAPI(url, {}, "get", token);
   } catch (error) {

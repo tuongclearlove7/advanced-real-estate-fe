@@ -196,10 +196,6 @@ const DauGiaComponent = () => {
   ]);
 
   useEffect(() => {
-    console.log("auctionReducer", auctionReducer);
-  }, [auctionReducer]);
-
-  useEffect(() => {
     const interval = setInterval(async () => {
       const countdown = await appVariables.handleAuction(
         auth,
@@ -295,7 +291,6 @@ const DauGiaComponent = () => {
 
   const onMessageReceived = async (payload) => {
     const msg = JSON.parse(payload.body);
-    console.log("message: ", msg);
     if (msg?.isNewAuction) {
       dispatch(removeListWaitingUser());
       dispatch(removeBidMessages());

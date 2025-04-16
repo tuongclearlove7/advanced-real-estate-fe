@@ -56,8 +56,6 @@ const AuctionHistory = () => {
         "get",
         auth?.token
       );
-      console.log("data: ", res?.data);
-
       setAuctionHistories(res?.data);
     } catch (error) {
       message.error("Đã có lỗi xảy ra");

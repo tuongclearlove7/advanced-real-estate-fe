@@ -63,15 +63,10 @@ function AdminRouter() {
   }, []);
 
   useEffect(() => {
-    console.log("listRoleManagerPage: ", listRoleManagerPage);
-  }, [listRoleManagerPage]);
-
-  useEffect(() => {
     //luôn luôn gọi tới API để check token xem token có chính xác hay không
     if (auth?.token) {
       fetchUser("/api/users", {}, "get", auth?.token, dispatch, message).then();
     }
-    console.log("auth: ", auth);
   }, [auth?.token]);
 
   useEffect(() => {

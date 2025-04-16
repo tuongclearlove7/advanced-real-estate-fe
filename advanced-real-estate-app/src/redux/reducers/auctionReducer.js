@@ -87,7 +87,7 @@ export const {
   userOutRoom,
   updateUserInRoom,
   setListWaitingUser,
-  removeListWaitingUser
+  removeListWaitingUser,
 } = auctionSlice.actions;
 export default auctionSlice.reducer;
 export const auctionSelector = (state) => state.auction;

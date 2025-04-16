@@ -5,10 +5,10 @@ import buildingReducer from "./buildingReducer";
 import auctionSelector from "./auctionReducer"; // Import authReducer
 
 const rootReducers = combineReducers({
-    auth: authReducer,
-    chat: chatReducer,
-    building: buildingReducer,
-    auction: auctionSelector,
+  auth: authReducer,
+  chat: chatReducer,
+  building: buildingReducer,
+  auction: auctionSelector,
 });
 
 export default rootReducers;

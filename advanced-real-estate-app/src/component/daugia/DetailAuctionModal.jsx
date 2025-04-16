@@ -17,7 +17,6 @@ const DetailAuctionModal = ({ auctionId }) => {
     if (auctionId) {
       handleAPINotToken(`/api/user/auctions/${auctionId}`, {}, "GET")
         .then((res) => {
-          console.log(res?.data);
           setAuction(res?.data);
         })
         .catch((error) => {

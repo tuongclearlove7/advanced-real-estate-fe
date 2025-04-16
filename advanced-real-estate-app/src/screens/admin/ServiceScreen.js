@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 const ServiceScreen = () => {
-    return <div>Welcome to Service Screen</div>;
-}
+  return <div>Welcome to Service Screen</div>;
+};
 
-export default ServiceScreen
+export default ServiceScreen;

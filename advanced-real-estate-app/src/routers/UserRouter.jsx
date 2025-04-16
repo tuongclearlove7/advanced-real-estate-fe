@@ -122,13 +122,7 @@ const UserRouter = () => {
 
   useEffect(() => {
     if (auth?.token) {
-      fetchUser(
-        "/api/users/my-info",
-        {},
-        "get",
-        auth?.token,
-        dispatch,
-      ).then();
+      fetchUser("/api/users/my-info", {}, "get", auth?.token, dispatch).then();
     }
   }, [auth?.token]);
 
