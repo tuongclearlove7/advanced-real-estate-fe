@@ -42,6 +42,7 @@ const AuctionCreateModal = ({ refresh }) => {
       const matchesAuctionBuilding = typeName.includes("Nhà đấu giá");
       return matchesAuctionBuilding;
     });
+    console.log(filteredData);
     setAuctionBuildings(filteredData);
   }, [buildingReducer?.buildings]);
 
