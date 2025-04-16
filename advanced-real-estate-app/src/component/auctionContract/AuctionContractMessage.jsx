@@ -3,13 +3,6 @@ import React, { useEffect, useState } from "react";
 import { f_collectionUtil } from "../../utils/f_collectionUtil";
 
 const AuctionContractMessage = (props) => {
-  useEffect(() => {
-    console.log("info: ", props?.info);
-  }, [props]);
-
-  useEffect(() => {
-    console.log("late: ", props?.late);
-  }, [props]);
 
   return (
     <div className={styles.messageContainer}>

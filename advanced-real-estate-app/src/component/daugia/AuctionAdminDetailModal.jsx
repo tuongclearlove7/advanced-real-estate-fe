@@ -4,7 +4,6 @@ import handleAPI from "../../apis/handlAPI";
 import { message } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { authSelector } from "../../redux/reducers/authReducer";
-import { buildingSelector } from "../../redux/reducers/buildingReducer";
 import { appVariables } from "../../constants/appVariables";
 import {
   removeBidMessages,
