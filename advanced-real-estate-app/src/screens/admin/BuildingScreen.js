@@ -1309,28 +1309,14 @@ const BuildingScreen = () => {
                                   Vui lòng chọn kiểu tòa nhà
                                 </option>
                                 {typeBuilding.map((value, index) => (
-                                  <option key={index} value={value.id}>
-                                    {value.type_name}
+                                  <option key={key} value={value?.id}>
+                                   {`${value?.type_name} - giá: ${appVariables.formatMoney(value?.price)}`}
                                   </option>
                                 ))}
                               </select>
                             </div>
                             <div className="col">
                               <label className="mb-2">Địa Chỉ</label>
-                              {/* <select className='form-control'
-                                                                value={updateBuilding?.map?.id}
-                                                                onChange={(e) => setUpdateBuilding({
-                                                                    ...updateBuilding,
-                                                                    id_map : e.target.value
-                                                                })}
-                                                            >
-                                                                <option value="">Vui lòng chọn địa chỉ</option>
-                                                                {
-                                                                    maps.map((value, key) => (
-                                                                        <option key={key} value={value.id}>{value.map_name}</option>
-                                                                    ))
-                                                                }
-                                                            </select> */}
                               <select
                                 className="form-control"
                                 value={updateBuilding?.id_map || ""}
@@ -1338,8 +1324,8 @@ const BuildingScreen = () => {
                               >
                                 <option value="">Vui lòng chọn địa chỉ</option>
                                 {maps.map((value, index) => (
-                                  <option key={index} value={value.id}>
-                                    {value.map_name}
+                                  <option key={index} value={value?.id}>
+                                    {`${value?.map_name} - tọa lạc tại ${value?.address}`}
                                   </option>
                                 ))}
                               </select>
