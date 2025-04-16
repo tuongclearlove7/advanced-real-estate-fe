@@ -39,10 +39,9 @@ const AuctionCreateModal = ({ refresh }) => {
     const allBuildings = buildingReducer?.buildings || [];
     const filteredData = allBuildings.filter((building) => {
       const typeName = building?.typeBuilding?.type_name?.toLowerCase() || "";
-      const matchesAuctionBuilding = typeName.includes("Nhà đấu giá");
+      const matchesAuctionBuilding = typeName.includes("nhà đấu giá");
       return matchesAuctionBuilding;
     });
-    console.log(filteredData);
     setAuctionBuildings(filteredData);
   }, [buildingReducer?.buildings]);
 
