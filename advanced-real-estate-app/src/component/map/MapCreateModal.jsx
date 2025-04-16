@@ -19,6 +19,23 @@ const MapCreateModal = (props) => {
   const auth = useSelector(authSelector);
   const buildingReducer = useSelector(buildingSelector);
   const [item, setItem] = useState(null);
+  const [center, setCenter] = useState([14.0583, 108.2772]);
+
+  useEffect(() => {
+    GetData();
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setCenter([position.coords.latitude, position.coords.longitude]);
+        },
+        (error) => {
+          console.error("Lỗi khi lấy vị trí người dùng: ", error);
+        }
+      );
+    } else {
+      console.error("Trình duyệt không hỗ trợ Geolocation.");
+    }
+  }, []);
 
   return (
     <div
@@ -47,7 +64,7 @@ const MapCreateModal = (props) => {
                 <div className="card">
                   <div className="card-header">
                     <MapContainer
-                      center={props?.center} // Tọa độ trung tâm Việt Nam
+                      center={center} // Tọa độ trung tâm Việt Nam
                       zoom={15} // Độ zoom phù hợp để hiển thị toàn bộ lãnh thổ
                       style={{ height: "620px", width: "100%" }} // Kích thước của bản đồ
                     >
