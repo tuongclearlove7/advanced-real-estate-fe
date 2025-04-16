@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useRef, useState } from "react";
 import {
   MapContainer,
@@ -20,6 +17,9 @@ import { useSelector } from "react-redux";
 import { authSelector } from "../../redux/reducers/authReducer";
 import { Bag, Eye, EyeSlash, Setting2 } from "iconsax-react";
 import { Button, Checkbox, Dropdown, Space } from "antd";
+import MapCreateModal from "./../../component/map/MapCreateModal";
+import MapUpdateModal from "./../../component/map/MapUpdateModal";
+
 const MapScreen = () => {
   const [userLocation, setUserLocation] = useState(null); // Tọa độ người dùng
   const [selectedLocation, setSelectedLocation] = useState(null); // Tọa độ người dùng chọn
@@ -328,6 +328,31 @@ const MapScreen = () => {
   }, [updateMap]); // Dùng useEffect để cập nhật khi updateMap thay đổi
   return (
     <>
+      <MapCreateModal
+        lon={lon}
+        lat={lat}
+        ward={ward}
+        center={center}
+        nameMap={nameMap}
+        address={address}
+        district={district}
+        province={province}
+        handleCreateMap={CreateMap}
+        setNameMap={setNameMap}
+        selectedShowLocation={selectedShowLocation}
+      />
+      <MapUpdateModal
+        updateMap={updateMap}
+        updateLon={updateLon}
+        updateLat={updateLat}
+        updateWard={updateWard}
+        centerUpdate={centerUpdate}
+        handleUpdateMap={UpdateMap}
+        updateAddress={updateAddress}
+        updateDistrict={updateDistrict}
+        updateProvince={updateProvince}
+        selectedShowLocationUpdate={selectedShowLocationUpdate}
+      />
       <div className="row">
         <div className="col-5">
           <div className="card">
@@ -367,168 +392,6 @@ const MapScreen = () => {
                   >
                     Thêm Mới
                   </button>
-
-                  <div
-                    className="modal fade"
-                    id="themMoiModal"
-                    tabIndex="-1"
-                    aria-labelledby="exampleModalLabel"
-                    aria-hidden="true"
-                  >
-                    <div className="modal-dialog modal-xl">
-                      <div className="modal-content">
-                        <div className="modal-header">
-                          <h5 className="modal-title" id="exampleModalLabel">
-                            Thêm Mới Map
-                          </h5>
-                          <button
-                            type="button"
-                            className="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
-                          ></button>
-                        </div>
-                        <div className="modal-body">
-                          <div className="row">
-                            <div className="col-6">
-                              <div className="card">
-                                <div className="card-header">
-                                  <MapContainer
-                                    center={center} // Tọa độ trung tâm Việt Nam
-                                    zoom={15} // Độ zoom phù hợp để hiển thị toàn bộ lãnh thổ
-                                    style={{ height: "620px", width: "100%" }} // Kích thước của bản đồ
-                                  >
-                                    <TileLayer
-                                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                                      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                    />
-                                    <ShowMapWrapper />
-                                    {selectedShowLocation && (
-                                      <Marker
-                                        position={selectedShowLocation} // Vị trí đã click
-                                        icon={L.icon({
-                                          iconUrl: appInfo.currentLocationIcon,
-                                          iconSize: [35, 35],
-                                          iconAnchor: [17, 35],
-                                        })}
-                                      />
-                                    )}
-                                  </MapContainer>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="col-6">
-                              <div className="card">
-                                <div className="card-body">
-                                  <div className="row">
-                                    <div className="col">
-                                      <label htmlFor="" className="mb-2">
-                                        Tên Map
-                                      </label>
-                                      <input
-                                        type="text"
-                                        className="form-control"
-                                        value={nameMap}
-                                        onChange={(e) => {
-                                          setNameMap(e.target.value);
-                                        }}
-                                      />
-                                    </div>
-                                    <div className="col">
-                                      <label htmlFor="" className="mb-2">
-                                        Địa Chỉ
-                                      </label>
-                                      <input
-                                        type="text"
-                                        className="form-control"
-                                        value={address}
-                                        readOnly
-                                      />
-                                    </div>
-                                  </div>
-                                  <div className="row mt-2">
-                                    <div className="col">
-                                      <label htmlFor="" className="mb-2">
-                                        Phường / Thị Trấn
-                                      </label>
-                                      <input
-                                        type="text"
-                                        className="form-control"
-                                        value={ward}
-                                        readOnly
-                                      />
-                                    </div>
-                                    <div className="col">
-                                      <label htmlFor="" className="mb-2">
-                                        Quận / Huyện
-                                      </label>
-                                      <input
-                                        type="text"
-                                        className="form-control"
-                                        value={district}
-                                        readOnly
-                                      />
-                                    </div>
-                                    <div className="col">
-                                      <label htmlFor="" className="mb-2">
-                                        Tỉnh
-                                      </label>
-                                      <input
-                                        type="text"
-                                        className="form-control"
-                                        value={province}
-                                        readOnly
-                                      />
-                                    </div>
-                                  </div>
-                                  <div className="row mt-2">
-                                    <div className="col">
-                                      <label htmlFor="" className="mb-2">
-                                        Kinh Độ
-                                      </label>
-                                      <input
-                                        type="text"
-                                        className="form-control"
-                                        value={lon}
-                                        readOnly
-                                      />
-                                    </div>
-                                    <div className="col">
-                                      <label htmlFor="" className="mb-2">
-                                        Vĩ Độ
-                                      </label>
-                                      <input
-                                        type="text"
-                                        className="form-control"
-                                        value={lat}
-                                        readOnly
-                                      />
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="modal-footer">
-                          <button
-                            type="button"
-                            className="btn btn-secondary"
-                            data-bs-dismiss="modal"
-                          >
-                            Đóng
-                          </button>
-                          <button
-                            type="button"
-                            className="btn btn-primary"
-                            onClick={() => CreateMap()}
-                          >
-                            Thêm Mới
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -703,171 +566,6 @@ const MapScreen = () => {
                       </tr>
                     ))}
                   </tbody>
-                  <div
-                    class="modal fade"
-                    id="EditModal"
-                    tabindex="-1"
-                    aria-labelledby="exampleModalLabel"
-                    aria-hidden="true"
-                  >
-                    <div class="modal-dialog modal-xl">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">
-                            Cập Nhật Map
-                          </h5>
-                          <button
-                            type="button"
-                            class="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
-                          ></button>
-                        </div>
-                        <div className="modal-body">
-                          <div className="row">
-                            <div className="col-6">
-                              <div className="card">
-                                <div className="card-header">
-                                  <MapContainer
-                                    key={centerUpdate.join(",")} // Để render lại bản đồ khi vị trí trung tâm thay đổi
-                                    center={centerUpdate} // Cập nhật vị trí trung tâm của bản đồ
-                                    zoom={17} // Độ zoom của bản đồ
-                                    style={{ height: "620px", width: "100%" }} // Kích thước bản đồ
-                                  >
-                                    <TileLayer
-                                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                                      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                    />
-                                    <ShowMapUpdateWrapper />
-                                    {selectedShowLocationUpdate && (
-                                      <Marker
-                                        position={selectedShowLocationUpdate} // Vị trí marker cập nhật
-                                        icon={L.icon({
-                                          iconUrl: appInfo.currentLocationIcon,
-                                          iconSize: [35, 35],
-                                          iconAnchor: [17, 35],
-                                        })}
-                                      />
-                                    )}
-                                  </MapContainer>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="col-6">
-                              <div className="card">
-                                <div className="card-body">
-                                  <div className="row">
-                                    <div className="col">
-                                      <label htmlFor="" className="mb-2">
-                                        Tên Map
-                                      </label>
-                                      <input
-                                        type="text"
-                                        className="form-control"
-                                        value={updateMap.map_name}
-                                        onChange={(e) => {
-                                          setUpdateMap({
-                                            ...updateMap,
-                                            map_name: e.target.value,
-                                          });
-                                        }}
-                                      />
-                                    </div>
-                                    <div className="col">
-                                      <label htmlFor="" className="mb-2">
-                                        Địa Chỉ
-                                      </label>
-                                      <input
-                                        type="text"
-                                        className="form-control"
-                                        value={updateAddress}
-                                        readOnly
-                                      />
-                                    </div>
-                                  </div>
-                                  <div className="row mt-2">
-                                    <div className="col">
-                                      <label htmlFor="" className="mb-2">
-                                        Phường / Thị Trấn
-                                      </label>
-                                      <input
-                                        type="text"
-                                        className="form-control"
-                                        value={updateWard}
-                                        readOnly
-                                      />
-                                    </div>
-                                    <div className="col">
-                                      <label htmlFor="" className="mb-2">
-                                        Quận / Huyện
-                                      </label>
-                                      <input
-                                        type="text"
-                                        className="form-control"
-                                        value={updateDistrict}
-                                        readOnly
-                                      />
-                                    </div>
-                                    <div className="col">
-                                      <label htmlFor="" className="mb-2">
-                                        Tỉnh
-                                      </label>
-                                      <input
-                                        type="text"
-                                        className="form-control"
-                                        value={updateProvince}
-                                        readOnly
-                                      />
-                                    </div>
-                                  </div>
-                                  <div className="row mt-2">
-                                    <div className="col">
-                                      <label htmlFor="" className="mb-2">
-                                        Kinh Độ
-                                      </label>
-                                      <input
-                                        type="text"
-                                        className="form-control"
-                                        value={updateLon}
-                                        readOnly
-                                      />
-                                    </div>
-                                    <div className="col">
-                                      <label htmlFor="" className="mb-2">
-                                        Vĩ Độ
-                                      </label>
-                                      <input
-                                        type="text"
-                                        className="form-control"
-                                        value={updateLat}
-                                        readOnly
-                                      />
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button
-                            type="button"
-                            class="btn btn-secondary"
-                            data-bs-dismiss="modal"
-                          >
-                            Đóng
-                          </button>
-                          <button
-                            type="button"
-                            class="btn btn-primary"
-                            onClick={() => UpdateMap()}
-                          >
-                            Cập Nhật
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </table>
               </div>
             </div>
