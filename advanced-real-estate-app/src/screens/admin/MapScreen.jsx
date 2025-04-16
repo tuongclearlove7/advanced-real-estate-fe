@@ -394,7 +394,7 @@ const MapScreen = () => {
                               <div className="card">
                                 <div className="card-header">
                                   <MapContainer
-                                    center={[14.0583, 108.2772]} // Tọa độ trung tâm Việt Nam
+                                    center={center} // Tọa độ trung tâm Việt Nam
                                     zoom={15} // Độ zoom phù hợp để hiển thị toàn bộ lãnh thổ
                                     style={{ height: "620px", width: "100%" }} // Kích thước của bản đồ
                                   >
