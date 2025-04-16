@@ -10,6 +10,12 @@ import {
   removeBidMessages,
   removeUsers,
 } from "../../redux/reducers/auctionReducer";
+import {
+  buildingSelector,
+  failed,
+  setSelectedArea,
+  success,
+} from "../../redux/reducers/buildingReducer";
 
 const AuctionAdminDetailModal = ({ object, refresh }) => {
   const auth = useSelector(authSelector);
@@ -19,10 +25,15 @@ const AuctionAdminDetailModal = ({ object, refresh }) => {
   const [auctionBuildings, setAuctionBuildings] = useState([]);
 
   useEffect(() => {
+    getBuildings();
     setItem({
       ...object,
     });
   }, [object]);
+
+  useEffect(() => {
+    return () => dispatch(failed());
+  }, []);
 
   useEffect(() => {
     const allBuildings = buildingReducer?.buildings || [];
@@ -40,6 +51,20 @@ const AuctionAdminDetailModal = ({ object, refresh }) => {
       ...prevInfo,
       [name]: value,
     }));
+  };
+
+  const getBuildings = async () => {
+    try {
+      const data = await handleAPI(
+        `/api/admin/buildings`,
+        {},
+        "get",
+        auth?.token
+      );
+      dispatch(success(data.data.data));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const updateById = async () => {

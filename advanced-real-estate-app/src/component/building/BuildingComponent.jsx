@@ -81,7 +81,6 @@ const BuildingComponent = () => {
     callApiBuildings()
       .then((res) => {
         setBuildings(res?.data);
-        dispatch(success(res?.data));
       })
       .catch((error) => {
         dispatch(failed());

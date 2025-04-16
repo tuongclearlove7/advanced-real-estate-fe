@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { authSelector } from "../../redux/reducers/authReducer";
-import { useSelector } from "react-redux";
 import { Button, Checkbox, Dropdown, Space } from "antd";
 import handleAPI from "../../apis/handlAPI";
 import Toast from "../../config/ToastConfig";
@@ -97,7 +96,6 @@ const BuildingScreen = () => {
     try {
       const data = await handleAPI(url, {}, "get", auth?.token);
       setBuildings(data.data.data);
-      dispatch(success(data.data.data));
       setPagination(data.data.pagination);
     } catch (error) {
       console.log(error);
