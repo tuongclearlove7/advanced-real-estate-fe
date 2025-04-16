@@ -10,6 +10,7 @@ import L from "leaflet";
 import "leaflet-routing-machine";
 import { appInfo } from "./../../constants/appInfos";
 import { Bag, Setting2 } from "iconsax-react";
+import { appVariables } from "../../constants/appVariables";
 
 const BuildingScreen = () => {
   const auth = useSelector(authSelector);
@@ -741,8 +742,8 @@ const BuildingScreen = () => {
                                   Vui lòng chọn kiểu tòa nhà
                                 </option>
                                 {typeBuilding.map((value, key) => (
-                                  <option key={key} value={value.id}>
-                                    {value.type_name}
+                                  <option key={key} value={value?.id}>
+                                    {`${value?.type_name} - giá: ${appVariables.formatMoney(value?.price)}`}
                                   </option>
                                 ))}
                               </select>
