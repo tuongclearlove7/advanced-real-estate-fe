@@ -1309,7 +1309,7 @@ const BuildingScreen = () => {
                                   Vui lòng chọn kiểu tòa nhà
                                 </option>
                                 {typeBuilding.map((value, index) => (
-                                  <option key={key} value={value?.id}>
+                                  <option key={index} value={value?.id}>
                                    {`${value?.type_name} - giá: ${appVariables.formatMoney(value?.price)}`}
                                   </option>
                                 ))}
